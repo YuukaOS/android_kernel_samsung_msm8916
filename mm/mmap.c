@@ -312,6 +312,13 @@ SYSCALL_DEFINE1(brk, unsigned long, brk)
 
 	newbrk = PAGE_ALIGN(brk);
 	oldbrk = PAGE_ALIGN(mm->brk);
+	/* properly handle unaligned min_brk as an empty heap */
+	if (min_brk & ~PAGE_MASK) {
+		if (brk == min_brk)
+			newbrk -= PAGE_SIZE;
+		if (mm->brk == min_brk)
+			oldbrk -= PAGE_SIZE;
+	}
 	if (oldbrk == newbrk)
 		goto set_brk;
 
@@ -1660,7 +1667,6 @@ munmap_back:
 			allow_write_access(file);
 	}
 	file = vma->vm_file;
-	uksm_vma_add_new(vma);
 out:
 	perf_event_mmap(vma);
 
