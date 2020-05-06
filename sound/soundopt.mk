@@ -12,7 +12,6 @@ ccflags-y += -O1 -fthread-jumps \
           -findirect-inlining \
           -fipa-cp \
           -fipa-sra \
-          -fisolate-erroneous-paths-dereference \
           -foptimize-sibling-calls \
           -foptimize-strlen \
           -fpeephole2 \
@@ -21,4 +20,4 @@ ccflags-y += -O1 -fthread-jumps \
           -ftree-switch-conversion -ftree-tail-merge \
           -ftree-pre \
           -ftree-vrp \
-          -mtune=cortex-a57.cortex-a53
+          -mtune=cortex-a5
