@@ -707,6 +707,7 @@ __SYSCALL(__NR_seccomp, sys_seccomp)
 __SYSCALL(__NR_getrandom, sys_getrandom)
 #define __NR_memfd_create 279
 __SYSCALL(__NR_memfd_create, sys_memfd_create)
+<<<<<<< HEAD
 #define __NR_membarrier 280
 __SYSCALL(__NR_membarrier, sys_membarrier)
 

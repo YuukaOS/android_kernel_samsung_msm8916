@@ -1,0 +1,18 @@
+version: 2.1 
+jobs:
+  compile:
+   docker:
+      - image: ubuntu:18.04
+   steps:
+      - run:
+          command: |
+           apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential libncurses5-dev bzip2 git bc
+           git clone --depth=1 https://github.com/yuukaos/android_kernel_samsung_msm8916.git -b testing
+           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.git
+           cd android_kernel_samsung_msm8916
+           bash build_kernel.sh
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - compile
