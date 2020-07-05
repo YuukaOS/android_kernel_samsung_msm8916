@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$(pwd)/../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin:$PATH
+
 export ARCH=arm
 export SUBARCH="arm"
 export CROSS_COMPILE="arm-linux-gnueabihf-"
