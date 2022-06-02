@@ -6,12 +6,12 @@ jobs:
    steps:
       - run:
           command: |
-           apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential libncurses5-dev bzip2 git bc
-           git clone --depth=1 https://github.com/yuukaos/android_kernel_samsung_msm8916.git -b lineage-17.1
-           wget https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz
-           tar -xvf gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz
-           cd android_kernel_samsung_msm8916
-           bash build_kernel.sh
+           apt-get -y update && apt-get -y upgrade && apt-get -y install bc build-essential libncurses5-dev bzip2 git bc gcc-5
+           git clone https://codeberg.org/danipragustia/wt88047-android-kernel -b main kernel
+           wget https://releases.linaro.org/components/toolchain/binaries/latest-5/aarch64-linux-gnu/gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu.tar.xz
+           tar -xf gcc-linaro-5.5.0-2017.10-x86_64_aarch64-linux-gnu.tar.xz
+           cd kernel
+           bash build_kernelx.sh
 workflows:
   version: 2.1
   cooking:
